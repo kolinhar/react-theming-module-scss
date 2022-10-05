@@ -1,14 +1,17 @@
 import * as React from 'react';
-import { useEffect } from 'react';
+import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import variables from './variables.module.scss';
+import variablesModuleScss from './variables.module.scss';
+import './variables.scss';
+import './variables.module.css';
+import './variables.css';
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
-const JsonFormat = (key, val) => {
+const JsonFormat = (key: string, val: any) => {
   if (
     [
       '',
@@ -25,16 +28,35 @@ const JsonFormat = (key, val) => {
   }
 };
 
+const findMyVar = (varName: string) => {
+  return getComputedStyle(document.documentElement).getPropertyValue(varName);
+};
+
 function MyApp() {
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
 
+  const [forceWhite, setForceWhite] = useState<'dark' | ''>('');
+
+  console.log("findMyVar('--my-color')", findMyVar('--my-color'));
+  console.log("findMyVar('--my-module-color')", findMyVar('--my-module-color'));
+  console.log('findMyVar("myScssVar")', findMyVar('yhyghn !b myScssVar'));
+
+  const changeToWhite = React.useCallback(() => {
+    //just add/remove a class to parent element
+    setForceWhite((oldVal) => {
+      if (oldVal === 'dark') {
+        return '';
+      }
+      return 'dark';
+    });
+  }, []);
+
   return (
-    <main>
+    <main className={forceWhite}>
       <Box
         sx={{
           display: 'flex',
-          width: '100%',
           alignItems: 'center',
           justifyContent: 'center',
           bgcolor: 'background.default',
@@ -46,7 +68,10 @@ function MyApp() {
         {theme.palette.mode} mode
         <IconButton
           sx={{ ml: 1 }}
-          onClick={colorMode.toggleColorMode}
+          onClick={() => {
+            colorMode.toggleColorMode();
+            changeToWhite();
+          }}
           color="inherit"
         >
           {theme.palette.mode === 'dark' ? (
@@ -58,16 +83,58 @@ function MyApp() {
       </Box>
       <p>
         theme.palette.primary.main === variables.primaryMainDark :
-        {theme.palette.primary.main === variables.primaryMainDark
-          ? 'true'
-          : 'false'}
+        <b>
+          {theme.palette.primary.main === variablesModuleScss.primaryMainDark
+            ? 'true'
+            : 'false'}
+        </b>
         <br />
         theme.palette.primary.main === variables.primaryMainLight :
-        {theme.palette.primary.main === variables.primaryMainLight
-          ? 'true'
-          : 'false'}
+        <b>
+          {theme.palette.primary.main === variablesModuleScss.primaryMainLight
+            ? 'true'
+            : 'false'}
+        </b>
       </p>
       <pre>{JSON.stringify(theme.palette, JsonFormat, '   ')}</pre>
+      <section className={variablesModuleScss['flex-line']}>
+        <div
+          className={variablesModuleScss.square}
+          style={{ borderColor: theme.palette.primary.main }}
+        >
+          primary main
+        </div>
+        <div
+          className={variablesModuleScss.square}
+          style={{ borderColor: theme.palette.primary.light }}
+        >
+          primary light
+        </div>
+        <div
+          className={variablesModuleScss.square}
+          style={{ borderColor: theme.palette.primary.dark }}
+        >
+          primary dark
+        </div>
+        <div
+          className={variablesModuleScss.square}
+          style={{ borderColor: theme.palette.secondary.main }}
+        >
+          secondary main
+        </div>
+        <div
+          className={variablesModuleScss.square}
+          style={{ borderColor: theme.palette.secondary.light }}
+        >
+          secondary light
+        </div>
+        <div
+          className={variablesModuleScss.square}
+          style={{ borderColor: theme.palette.secondary.dark }}
+        >
+          secondary dark
+        </div>
+      </section>
     </main>
   );
 }
@@ -105,7 +172,7 @@ export default function ToggleColorMode() {
       secondaryMainLight,
       secondaryDarkLight,
       secondaryContrastTextLight,
-    } = variables;
+    } = variablesModuleScss;
     return createTheme({
       palette: {
         mode,

@@ -3,7 +3,7 @@
 $primary-light-dark: #90caf9;
 $primary-main-dark: #e3f2fd;
 $primary-dark-dark: #42a5f5;
-$primary-contrast-text-dark: rgba(0, 0, 0, 0.87);
+$primary-contrast-text-dark: rgba(255, 0, 0, 0.87);
 /*light theme*/
 $primary-light-light: #1976d2;
 $primary-main-light: #42a5f5;
@@ -45,4 +45,20 @@ $secondary-contrast-text-light: #fff;
   secondaryMainLight: $secondary-main-light;
   secondaryDarkLight: $secondary-dark-light;
   secondaryContrastTextLight: $secondary-contrast-text-light;
+}
+
+.square {
+  border-width: 5px;
+  border-style: solid;
+  color: $primary-contrast-text-dark;
+  background-color: black;
+}
+
+[class^='dark'] .square {
+  color: $primary-contrast-text-light;
+}
+
+.flex-line {
+  display: flex;
+  flex-direction: row;
 }
