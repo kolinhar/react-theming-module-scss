@@ -1,0 +1,48 @@
+/* PRIMARY */
+/*dark theme*/
+$primary-light-dark: #90caf9;
+$primary-main-dark: #e3f2fd;
+$primary-dark-dark: #42a5f5;
+$primary-contrast-text-dark: rgba(0, 0, 0, 0.87);
+/*light theme*/
+$primary-light-light: #1976d2;
+$primary-main-light: #42a5f5;
+$primary-dark-light: #1565c0;
+$primary-contrast-text-light: #fff;
+
+/* SECONDARY */
+/*dark theme*/
+$secondary-light-dark: #ce93d8;
+$secondary-main-dark: #f3e5f5;
+$secondary-dark-dark: #ab47bc;
+$secondary-contrast-text-dark: rgba(0, 0, 0, 0.87);
+/*light theme*/
+$secondary-light-light: #9c27b0;
+$secondary-main-light: #ba68c8;
+$secondary-dark-light: #7b1fa2;
+$secondary-contrast-text-light: #fff;
+
+:export {
+  /* PRIMARY */
+  /*dark theme*/
+  primaryLightDark: $primary-light-dark;
+  primaryMainDark: $primary-main-dark;
+  primaryDarkDark: $primary-dark-dark;
+  primaryContrastTextDark: $primary-contrast-text-dark;
+  /*light theme*/
+  primaryLightLight: $primary-light-light;
+  primaryMainLight: $primary-main-light;
+  primaryDarkLight: $primary-dark-light;
+  primaryContrastTextLight: $primary-contrast-text-light;
+  /* SECONDARY */
+  /*dark theme*/
+  secondaryLightDark: $secondary-light-dark;
+  secondaryMainDark: $secondary-main-dark;
+  secondaryDarkDark: $secondary-dark-dark;
+  secondaryContrastTextDark: $secondary-contrast-text-dark;
+  /*light theme*/
+  secondaryLightLight: $secondary-light-light;
+  secondaryMainLight: $secondary-main-light;
+  secondaryDarkLight: $secondary-dark-light;
+  secondaryContrastTextLight: $secondary-contrast-text-light;
+}
