@@ -189,14 +189,14 @@ function MyApp() {
               <td>{JSON.stringify(variablesModuleCssR)}</td>
               <td>{variablesModuleScssR.primaryLightDark}</td>
             </tr>
-            <tr>
+            <tr className="facultatif">
               <th rowSpan={2}>DOM</th>
               <th>{isGoodValue(findMyVar('--my-color'))}</th>
               <th>{isGoodValue(findMyVar('myScssVar'))}</th>
               <th>{isGoodValue(findMyVar('--my-module-color'))}</th>
               <th>{isGoodValue(findMyVar('primaryLightDark'))}</th>
             </tr>
-            <tr>
+            <tr className="facultatif">
               <td>{findMyVar('--my-color')}</td>
               <td>{findMyVar('myScssVar')}</td>
               <td>{findMyVar('--my-module-color')}</td>

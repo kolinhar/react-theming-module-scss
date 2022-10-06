@@ -19,3 +19,7 @@ th {
 .green {
   color: rgb(57, 139, 57);
 }
+
+tr.facultatif {
+  background-color: #6affeb6e;
+}
