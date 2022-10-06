@@ -1,3 +1,21 @@
 :root {
   --my-color: #505050;
 }
+
+table {
+  empty-cells: hide;
+}
+
+tr,
+td,
+th {
+  border: 1px solid black;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: rgb(57, 139, 57);
+}
